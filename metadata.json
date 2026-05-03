@@ -1,0 +1,6 @@
+{
+  "name": "QuizPulse",
+  "description": "A vibrant, real-time multiplayer quiz game with live leaderboards and interactive host-participant rooms.",
+  "requestFramePermissions": [],
+  "majorCapabilities": []
+}
