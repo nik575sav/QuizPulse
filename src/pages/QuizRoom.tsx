@@ -109,6 +109,8 @@ export default function QuizRoom() {
     setIsSubmitted(true);
   };
 
+  const isMultiChoiceQuestion = (type: string) => type === "multi" || type === "multi_choice";
+
   if (!roomState) {
     return <div className="min-h-screen flex items-center justify-center bg-[#F0F4FF]"><div className="animate-spin w-12 h-12 border-4 border-indigo-600 border-t-transparent rounded-full"></div></div>;
   }
@@ -287,7 +289,7 @@ export default function QuizRoom() {
             
             <div className="grid gap-3 flex-none content-center">
               {quiz.currentQuestion.options.map((opt: any) => {
-                const isMulti = quiz.currentQuestion.type === 'multi_choice';
+                const isMulti = isMultiChoiceQuestion(quiz.currentQuestion.type);
                 const isSelected = isMulti ? !!(localAnswer as string[])?.includes(opt.id) : localAnswer === opt.id;
                 
                 return (
@@ -342,7 +344,7 @@ export default function QuizRoom() {
             
             <div className="grid gap-3 flex-1 content-center">
               {quiz.currentQuestion.options.map((opt: any) => {
-                const isMulti = quiz.currentQuestion.type === 'multi_choice';
+                const isMulti = isMultiChoiceQuestion(quiz.currentQuestion.type);
                 const isSelected = isMulti ? !!(localAnswer as string[])?.includes(opt.id) : localAnswer === opt.id;
                 
                 const isCorrect = Array.isArray(quiz.currentQuestion.correctOptionId)
